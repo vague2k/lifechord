@@ -1,0 +1,82 @@
+---
+import "../styles/global.css";
+import { Image } from 'astro:assets';
+import lifechordLogo from '../lifechord.webp';
+import lifechordBanner from '../lcbanner.webp';
+import bhlogo from '../bhlogo.webp';
+---
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+    </head>
+    <body>
+        <main>
+            <div class="flex flex-col p-10">
+                <span class="flex justify-center mb-10">
+                    <Image width={170} src={bhlogo} alt="blackheaven records logo"/>
+                </span>
+                <Image class="mb-10" src={lifechordBanner} alt="lifechord banner"/>
+                <Image src={lifechordLogo} alt="lifechord logo"/>
+                <div class="px-2 py-3 mt-10 flex flex-row justify-between font-jetbrains">
+                    <p class="font-extrabold">Albert<span class="font-normal"> - Vocals</span></p>
+                    <p class="font-extrabold">Ben<span class="font-normal"> - Guitar</span></p>
+                    <p class="font-extrabold">Giancarlo<span class="font-normal"> - Guitar</span></p>
+                    <p class="font-extrabold">Gabriella<span class="font-normal"> - Bass</span></p>
+                    <p class="font-extrabold">Jayson<span class="font-normal"> - Drums</span></p>
+                </div>
+                <article class="px-2 mt-10 flex flex-col justify-start font-jetbrains font-normal gap-y-10">
+                    <p class="w-2/5">
+                        In a world so consumed by hate and raging apathy toward fellow man,
+                        we hold the virtue that every person has value, and in their breath, that value
+                        is meant to be shared and celebrated. This life is the only one we get to live,
+                        and it is every individual's right to choose how they want to live that existence.
+                        Every man, woman, and child—across all creeds, races, and nationalities has
+                        a story to tell and love to spread.
+                    </p>
+
+                    <p class="grid grid-cols-[max-content_1fr] gap-x-10">
+                        <span>The friends you make</span>
+                        <span>...and the ones you lost</span>
+
+                        <span>The people you love you</span>
+                        <span>...and those who despise you</span>
+
+                        <span>The memories you hold dear</span>
+                        <span>...and the thoughts you'd rather forget</span>
+
+                        <span>The drawings you made</span>
+                        <span>...and the pages you tore apart</span>
+
+                        <span>The songs you scream</span>
+                        <span>...and the ones you cried to</span>
+
+                        <span>The hearts you broke</span>
+                        <span>...and those you mended</span>
+
+                        <span>The promises you kept</span>
+                        <span>...and the ones that faded away</span>
+
+                        <span>The connections you formed</span>
+                        <span>...and the bridges burned</span>
+
+                        <span>The communities you became a part of</span>
+                        <span>...and the one you renounced</span>
+
+                        <span>The overwhelming love you had to give</span>
+                        <span>...and the love the world forgot to give back</span>
+                    </p>
+
+                    <p class="w-2/5">
+                    These are the songs and melodies that scream through our hearts. So bare witness, and share
+                    with us in all the things no one thought could be shared.
+                    </p>
+                </article>
+                <footer class="flex justify-center mt-10">
+                    <Image width={170} src={bhlogo} alt="blackheaven records logo"/>
+                </footer>
+            </div>
+        </main>
+    </body>
+</html>
