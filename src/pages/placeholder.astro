@@ -1,0 +1,19 @@
+---
+import "../styles/global.css";
+import { Image } from 'astro:assets';
+import lifechordLogo from '../lifechord.webp';
+import lifechordBanner from '../lcbanner.webp';
+import bhlogo from '../bhlogo.webp';
+import base from '../layouts/base.astro'
+---
+<base>
+            <Image class="mb-10" src={lifechordBanner} alt="lifechord banner"/>
+            <Image src={lifechordLogo} width={150} alt="lifechord logo"/>
+            <div class="px-2 py-3 mt-10 flex flex-row justify-between font-jetbrains">
+                <p class="font-extrabold">Albert<span class="font-normal"> - Vocals</span></p>
+                <p class="font-extrabold">Ben<span class="font-normal"> - Guitar</span></p>
+                <p class="font-extrabold">Giancarlo<span class="font-normal"> - Guitar</span></p>
+                <p class="font-extrabold">Gabriella<span class="font-normal"> - Bass</span></p>
+                <p class="font-extrabold">Jayson<span class="font-normal"> - Drums</span></p>
+            </div>
+</base>

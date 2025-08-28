@@ -4,94 +4,48 @@ import { Image } from 'astro:assets';
 import lifechordLogo from '../lifechord.webp';
 import lifechordBanner from '../lcbanner.webp';
 import bhlogo from '../bhlogo.webp';
+import base from '../layouts/base.astro'
 ---
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
-    </head>
-    <body>
-        <main>
-            <div class="flex flex-col p-10">
-                <!-- <span class="flex justify-center mb-10"> -->
-                <!--     <Image width={170} src={bhlogo} alt="blackheaven records logo"/> -->
-                <!-- </span> -->
-                <Image class="mb-10" src={lifechordBanner} alt="lifechord banner"/>
-                <Image src={lifechordLogo} alt="lifechord logo"/>
-                <div class="px-2 py-3 mt-10 flex flex-row justify-between font-jetbrains">
-                    <p class="font-extrabold">Albert<span class="font-normal"> - Vocals</span></p>
-                    <p class="font-extrabold">Ben<span class="font-normal"> - Guitar</span></p>
-                    <p class="font-extrabold">Giancarlo<span class="font-normal"> - Guitar</span></p>
-                    <p class="font-extrabold">Gabriella<span class="font-normal"> - Bass</span></p>
-                    <p class="font-extrabold">Jayson<span class="font-normal"> - Drums</span></p>
-                </div>
-                <article class="px-2 mt-10 flex flex-col justify-start font-jetbrains font-normal gap-y-10">
-                    <p class="w-2/5">
-                        It feels as though there is so much to say, yet it's hard to find
-                        the right words to say it with. I actively avoid the feeling of inadequacy,
-                        and disappointment. I actively avoid feeling as though the world around me
-                        is bending out of my will. It's the anxiety that comes with the forming of
-                        new and novel experiences that cause me to tense up and scream on the inside.
-                    </p>
-                    <p class="w-2/5">
-                        And there's this sharp feeling in my chest. The active choice to put myself in others' place.
-                        The need to show compassion. The need to take what's broken and mend it back together.
-                        I renounce the thought of being complacent. I renounce the thought that what I say and what I do,
-                        does not matter. I renounce a life of stillness. I renounce this overwhelming feeling of apathy.
-                    </p>
-                    <p class="w-2/5">
-                        I must love how much life changes. The friends I make I will lose. The memories I hold dear
-                        I will forget. The things I create will be destroyed. The life I get to live, will end.
-                        All the love I have to give to this world... and all the love that the world will never give back,
-                        will go unfelt. This is what I live for. I need this. I feel this. I believe this.
-                    </p>
-                    <p class="w-2/5">
-                        I will look beyond myself.
-                    </p>
+<base>
 
-                    <!-- <p class="grid grid-cols-[max-content_1fr] gap-x-10"> -->
-                    <!--     <span>The friends you make</span> -->
-                    <!--     <span>...and the ones you lost</span> -->
-                    <!---->
-                    <!--     <span>The people you love you</span> -->
-                    <!--     <span>...and those who despise you</span> -->
-                    <!---->
-                    <!--     <span>The memories you hold dear</span> -->
-                    <!--     <span>...and the thoughts you'd rather forget</span> -->
-                    <!---->
-                    <!--     <span>The drawings you made</span> -->
-                    <!--     <span>...and the pages you tore apart</span> -->
-                    <!---->
-                    <!--     <span>The songs you scream</span> -->
-                    <!--     <span>...and the ones you cried to</span> -->
-                    <!---->
-                    <!--     <span>The hearts you broke</span> -->
-                    <!--     <span>...and those you mended</span> -->
-                    <!---->
-                    <!--     <span>The promises you kept</span> -->
-                    <!--     <span>...and the ones that faded away</span> -->
-                    <!---->
-                    <!--     <span>The connections you formed</span> -->
-                    <!--     <span>...and the bridges burned</span> -->
-                    <!---->
-                    <!--     <span>The communities you became a part of</span> -->
-                    <!--     <span>...and the one you renounced</span> -->
-                    <!---->
-                    <!--     <span>The overwhelming love you had to give</span> -->
-                    <!--     <span>...and the love the world forgot to give back</span> -->
-                    <!-- </p> -->
-                    <!---->
-                    <!-- <p class="w-2/5"> -->
-                    <!-- These are the songs and melodies that scream through our hearts. So bare witness, and share -->
-                    <!-- with us in all the things no one thought could be shared. -->
-                    <!-- </p> -->
-                </article>
-                <footer class="flex flex-col items-center justify-center mt-10">
-                    <Image width={170} src={bhlogo} alt="blackheaven records logo"/>
-                    <a class="text-sm hover:underline font-jetbrains" href="https://blackheavenrecords.bigcartel.com/">Blackheaven Records</a>
-                </footer>
-            </div>
-        </main>
-    </body>
-</html>
+<div class="h-screen flex flex-col justify-center items-center">
+    <main class="flex mb-10 justify-center">
+        <div class="text-xs flex flex-col w-[400px] mx-auto font-jetbrains gap-y-7">
+            <Image loading="eager" src={lifechordBanner} width={410} alt="lifechord logo"/>
+            <p>
+            It feels as though there is so much to say, yet it's hard to find
+            the right words to say it with. I actively avoid the feeling of inadequacy,
+            and disappointment. I actively avoid feeling as though the world around me
+            is bending out of my will. It's the anxiety that comes with the forming of
+            new and novel experiences that cause me to tense up and scream on the inside.
+            </p>
+            <p>
+            And there's this sharp feeling in my chest. The active choice to put myself in others' place.
+            The need to show compassion. The need to take what's broken and mend it back together.
+            I renounce the thought of being complacent. I renounce the thought that what I say and what I do,
+            does not matter. I renounce a life of stillness. I renounce this overwhelming feeling of apathy.
+            </p>
+            <p>
+            Things will change. The friends I make I will lose. The memories I hold dear
+            I will forget. The things I create will be destroyed. All the love I have to give
+            to this world... and all the love that the world will never give back,
+            will go unfelt. This is what I live for. I need this. I feel this. I believe this.
+            </p>
+            <p>
+            I will look beyond myself.
+            </p>
+        </div>
+    </main>
+
+    <footer class="flex gap-x-10 items-center">
+        <Image loading="eager" src={lifechordLogo} width={150} alt="lifechord logo"/>
+        <Image loading="eager" width={150} src={bhlogo} alt="blackheaven records logo"/>
+        <!-- <span class="mt-2 flex items-center gap-x-1 text-sm"> -->
+        <!--     <span>&copy;</span> -->
+        <!--     <a class="hover:underline hover:text-blue-400 font-jetbrains" href="https://blackheavenrecords.bigcartel.com/">Blackheaven Records.</a> -->
+        <!--     <span class="font-jetbrains">2024-2025</span> -->
+        <!-- </span> -->
+    </footer>
+    </main>
+</div>
+</base>
