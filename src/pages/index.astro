@@ -4,31 +4,43 @@ import { Image } from "astro:assets";
 import lifechordLogo from "../lifechord.webp";
 import lifechordBanner from "../lcbanner.webp";
 import bhlogo from "../bhlogo.webp";
-import base from "../layouts/base.astro";
 ---
-<base>
-    <main class="min-h-screen flex flex-col justify-center items-center p-10 gap-y-5 sm:gap-y-10">
-        <Image class="w-full max-w-md object-contain" loading="eager" src={lifechordBanner} alt="lifechord banner"/>
-        <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-md text-left">
-            <p>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lifechord</title>
+        <!-- Standard favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <!-- IOS / android favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+        <link rel="manifest" href="/favicon/site.webmanifest">
+    </head>
+    <body>
+        <main class="min-h-screen flex flex-col justify-center items-center p-10 gap-y-5 sm:gap-y-10">
+            <Image class="w-full max-w-md object-contain" loading="eager" src={lifechordBanner} alt="lifechord banner"/>
+            <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-md text-left">
+                <p>
                 Life and all it's shortcomings is beautiful. The friends I make I will lose. The memories I hold dear
                 I will forget. The things I create will be destroyed. All the love I have to give
                 to this world... and all the love the world will never give back.
-            </p>
-            <p>
+                </p>
+                <p>
                 I will extend my hand to those in need of empathy and compassion.
                 I will offer assistance to those who can't muster up the courage to assist themselves.
                 I will be the voice for those who are too afraid to be critized.
-            </p>
-            <p>
+                </p>
+                <p>
                 I renounce this festering hate plauging humanity.
-            These truths is what makes life is worth dying for. I believe this.</p>
-            <p>Rest assured...</p>
-            <p>Things. Will. Change.</p>
-        </div>
-        <footer class="flex flex-col xs:flex-row items-center gap-6 sm:gap-10">
-            <Image class="w-52 sm:w-40 object-contain" loading="eager" src={lifechordLogo} alt="lifechord logo"/>
-            <Image class="w-52 sm:w-40 object-contain" loading="eager" src={bhlogo} alt="blackheaven logo"/>
-        </footer>
-    </main>
-</base>
+                These truths is what makes life is worth dying for. I believe this.</p>
+                <p>Rest assured...</p>
+                <p>Things. Will. Change.</p>
+            </div>
+            <footer class="flex flex-col xs:flex-row items-center gap-6 sm:gap-10">
+                <Image class="w-52 sm:w-40 object-contain" loading="eager" src={lifechordLogo} alt="lifechord logo"/>
+                <Image class="w-52 sm:w-40 object-contain" loading="eager" src={bhlogo} alt="blackheaven logo"/>
+            </footer>
+        </main>
+    </body>
+</html>
