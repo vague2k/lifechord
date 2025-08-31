@@ -1,51 +1,34 @@
 ---
 import "../styles/global.css";
-import { Image } from 'astro:assets';
-import lifechordLogo from '../lifechord.webp';
-import lifechordBanner from '../lcbanner.webp';
-import bhlogo from '../bhlogo.webp';
-import base from '../layouts/base.astro'
+import { Image } from "astro:assets";
+import lifechordLogo from "../lifechord.webp";
+import lifechordBanner from "../lcbanner.webp";
+import bhlogo from "../bhlogo.webp";
+import base from "../layouts/base.astro";
 ---
 <base>
-
-<div class="h-screen flex flex-col justify-center items-center">
-    <main class="flex mb-10 justify-center">
-        <div class="text-xs flex flex-col w-[400px] mx-auto font-jetbrains gap-y-7">
-            <Image loading="eager" src={lifechordBanner} width={410} alt="lifechord logo"/>
+    <main class="min-h-screen flex flex-col justify-center items-center p-10 gap-y-5 sm:gap-y-10">
+        <Image class="w-full max-w-md object-contain" loading="eager" src={lifechordBanner} alt="lifechord banner"/>
+        <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-md text-left">
             <p>
-            It feels as though there is so much to say, yet it's hard to find
-            the right words to say it with. I actively avoid the feeling of inadequacy,
-            and disappointment. I actively avoid feeling as though the world around me
-            is bending out of my will. It's the anxiety that comes with the forming of
-            new and novel experiences that cause me to tense up and scream on the inside.
+                Life and all it's shortcomings is beautiful. The friends I make I will lose. The memories I hold dear
+                I will forget. The things I create will be destroyed. All the love I have to give
+                to this world... and all the love the world will never give back.
             </p>
             <p>
-            And there's this sharp feeling in my chest. The active choice to put myself in others' place.
-            The need to show compassion. The need to take what's broken and mend it back together.
-            I renounce the thought of being complacent. I renounce the thought that what I say and what I do,
-            does not matter. I renounce a life of stillness. I renounce this overwhelming feeling of apathy.
+                I will extend my hand to those in need of empathy and compassion.
+                I will offer assistance to those who can't muster up the courage to assist themselves.
+                I will be the voice for those who are too afraid to be critized.
             </p>
             <p>
-            Things will change. The friends I make I will lose. The memories I hold dear
-            I will forget. The things I create will be destroyed. All the love I have to give
-            to this world... and all the love that the world will never give back,
-            will go unfelt. This is what I live for. I need this. I feel this. I believe this.
-            </p>
-            <p>
-            I will look beyond myself.
-            </p>
+                I renounce this festering hate plauging humanity.
+            These truths is what makes life is worth dying for. I believe this.</p>
+            <p>Rest assured...</p>
+            <p>Things. Will. Change.</p>
         </div>
+        <footer class="flex flex-col xs:flex-row items-center gap-6 sm:gap-10">
+            <Image class="w-52 sm:w-40 object-contain" loading="eager" src={lifechordLogo} alt="lifechord logo"/>
+            <Image class="w-52 sm:w-40 object-contain" loading="eager" src={bhlogo} alt="blackheaven logo"/>
+        </footer>
     </main>
-
-    <footer class="flex gap-x-10 items-center">
-        <Image loading="eager" src={lifechordLogo} width={150} alt="lifechord logo"/>
-        <Image loading="eager" width={150} src={bhlogo} alt="blackheaven records logo"/>
-        <!-- <span class="mt-2 flex items-center gap-x-1 text-sm"> -->
-        <!--     <span>&copy;</span> -->
-        <!--     <a class="hover:underline hover:text-blue-400 font-jetbrains" href="https://blackheavenrecords.bigcartel.com/">Blackheaven Records.</a> -->
-        <!--     <span class="font-jetbrains">2024-2025</span> -->
-        <!-- </span> -->
-    </footer>
-    </main>
-</div>
 </base>
