@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import lifechordLogo from "../lifechord.webp";
 import lifechordBanner from "../lcbanner.webp";
 import bhlogo from "../bhlogo.webp";
+import Navbar from "../components/Navbar.astro";
 import PageTitle from "../components/PageTitle.astro";
 ---
 <html lang="en">
@@ -19,7 +20,8 @@ import PageTitle from "../components/PageTitle.astro";
         <link rel="manifest" href="/favicon/site.webmanifest">
     </head>
     <body>
-        <main class="min-h-screen flex flex-col justify-center items-center p-10 gap-y-5 sm:gap-y-10">
+        <Navbar />
+        <main class="min-h-screen flex flex-col justify-center items-center p-10 pt-0 gap-y-5 sm:gap-y-10">
             <Image class="w-full max-w-md object-contain" loading="eager" src={lifechordBanner} alt="lifechord banner"/>
             <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-md text-left">
                 <p>

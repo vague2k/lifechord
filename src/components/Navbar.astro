@@ -1,0 +1,55 @@
+---
+const links = [
+  { name: "Shows", href: "/shows" },
+];
+---
+
+<nav class="w-full flex justify-center bg-white">
+  <div class="max-w-md font-jetbrains text-xs flex h-10 w-full px-4 md:px-0">
+    <!-- Desktop Menu -->
+    <ul class="w-full gap-x-10 justify-center items-center hidden md:flex">
+      {links.map(link => (
+        <li>
+          <a
+            class="hover:text-blue-400"
+            href={link.href}
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <div class="flex md:hidden w-full justify-center items-center">
+      <button
+        id="menu-btn"
+        class="p-2 focus:outline-none text-gray-800"
+        aria-label="Toggle menu"
+      >
+        ☰
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Dropdown -->
+<div id="mobile-menu" class="hidden font-jetbrains text-center border-neutral-200 border border-r-0 flex-col items-center md:hidden">
+  {links.map(link => (
+    <a
+      href={link.href}
+      class="py-2 text-xs hover:text-blue-400"
+    >
+      {link.name}
+    </a>
+  ))}
+</div>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
