@@ -1,0 +1,52 @@
+---
+import "@/styles/global.css";
+import Navbar from "@/components/Navbar.astro";
+import PageTitle from "@/components/PageTitle.astro";
+---
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <PageTitle page="Lyrics"/>
+        <!-- Standard favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <!-- IOS / android favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+        <link rel="manifest" href="/favicon/site.webmanifest">
+    </head>
+    <body>
+        <Navbar />
+        <main class="min-h-screen flex flex-col justify-center items-center p-10 pt-0 gap-y-5 sm:gap-y-10">
+            <div class="flex flex-col gap-y-4 font-jetbrains text-xs leading-relaxed max-w-lg text-center">
+                <span class="gap-y-2">
+                    <p> It’s ripping me apart to see you this way </p>
+                    <p> Crying yearning tears, saying to yourself </p>
+                    <p> they will never find me… and maybe I’m just better off alone </p>
+                </span>
+                <span class="gap-y-2">
+                    <p> Lying to yourself, saying that you despise those around you </p>
+                </span>
+                <span class="gap-y-2">
+                    <p> So misunderstood (How heavy it must be) </p>
+                    <p> So uncaring (to carry a calloused heart) </p>
+                    <p> How shortsighted (if only you could look beyond yourself) </p>
+                    <p> and choose to accept that things will change </p>
+                </span>
+                <span class="gap-y-2">
+                    <p> This human need to connect </p>
+                    <p> To be seen </p>
+                    <p> To be heard </p>
+                </span>
+                <span class="gap-y-2">
+                    <p> We need to learn how to walk away </p>
+                    <p> We need to learn how to look around </p>
+                    <p> To Take everything in </p>
+                </span>
+                <span class="gap-y-2">
+                    <p> And smell the roses </p>
+                </span>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,14 +1,14 @@
 ---
-import "../styles/global.css";
+import "@/styles/global.css";
 import { Image } from "astro:assets";
-import Navbar from "../components/Navbar.astro";
-import PageTitle from "../components/PageTitle.astro";
+import Navbar from "@/components/Navbar.astro";
+import PageTitle from "@/components/PageTitle.astro";
 ---
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <PageTitle page="shows"/>
+        <PageTitle page="Lyrics"/>
         <!-- Standard favicon -->
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -17,6 +17,11 @@ import PageTitle from "../components/PageTitle.astro";
         <link rel="manifest" href="/favicon/site.webmanifest">
     </head>
     <body>
-        there's some content here
+        <Navbar />
+        <main class="min-h-screen flex flex-col justify-center items-center p-10 pt-0 gap-y-5 sm:gap-y-10">
+            <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-lg text-left">
+                <a class="hover:text-blue-400" href="/lyrics/a-collection-of-sounds">A Collection Of Sounds and Melodies That Scream Through The Heart</a>
+            </div>
+        </main>
     </body>
 </html>
