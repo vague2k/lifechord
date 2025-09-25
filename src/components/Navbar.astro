@@ -1,7 +1,7 @@
 ---
 const links = [
-  { name: "Home", href: "/" },
-  { name: "Lyrics", href: "/lyrics" },
+	{ name: "Home", href: "/" },
+	{ name: "Lyrics", href: "/lyrics" },
 ];
 ---
 
@@ -25,7 +25,7 @@ const links = [
     <div class="flex md:hidden w-full justify-center items-center">
       <button
         id="menu-btn"
-        class="p-2 focus:outline-none text-gray-800"
+        class="p-2 text-lg focus:outline-none text-gray-800"
         aria-label="Toggle menu"
       >
         ☰
@@ -39,7 +39,7 @@ const links = [
   {links.map(link => (
     <a
       href={link.href}
-      class="py-2 text-xs hover:text-blue-400"
+      class="py-2 px-3 text-sm hover:text-blue-400"
     >
       {link.name}
     </a>
