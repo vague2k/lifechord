@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   astro-blog:
-    container_name: astro-blog
+    container_name: lifechord-site
     image: node:20-alpine
     working_dir: /app
     volumes:
