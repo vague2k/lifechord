@@ -1,9 +1,6 @@
+
 ---
 import "@/styles/global.css";
-import { Image } from "astro:assets";
-import lifechordLogo from "@/lifechord.webp";
-import lifechordBanner from "@/lcbanner.webp";
-import bhlogo from "@/bhlogo.webp";
 import Navbar from "@/components/Navbar.astro";
 import PageTitle from "@/components/PageTitle.astro";
 ---
@@ -11,7 +8,7 @@ import PageTitle from "@/components/PageTitle.astro";
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <PageTitle />
+        <PageTitle page="About"/>
         <!-- Standard favicon -->
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -22,17 +19,24 @@ import PageTitle from "@/components/PageTitle.astro";
     <body class="min-h-screen">
         <Navbar />
         <main class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5">
-            <Image class="w-full max-w-md object-contain" loading="eager" src={lifechordBanner} alt="lifechord banner"/>
-            <div class="flex flex-col gap-y-3 font-jetbrains text-xs leading-relaxed max-w-md text-center">
+            <div class="flex flex-col gap-y-3 font-jetbrains text-xs leading-relaxed max-w-md w-full text-center">
                 <p>
-                I wish life was different.
+                This band is about hope and compassion.
                 </p>
                 <p>
-                I wish the world was different.
+                Do you hate how much the world sucks? Do you want to make the most of it anyways?
                 </p>
                 <p>
-                It's time we take a hard look at ourselves and start caring about someone else.
+                Then this band is for you.
                 </p>
+                <br>
+                <p>
+                Live more life. Start today.
+                </p>
+            </div>
+            <br>
+            <div class="justify-center sm:justify-start gap-y-3 font-jetbrains text-xs max-w-md leading-relaxed text-left">
+                <p>Matthew, Ben, Albert, Gabi, Jayson</p>
             </div>
             <!-- <footer class="flex flex-col xs:flex-row items-center gap-6 sm:gap-10"> -->
             <!--     <Image class="w-52 sm:w-40 object-contain" loading="eager" src={lifechordLogo} alt="lifechord logo"/> -->
