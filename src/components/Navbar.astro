@@ -13,10 +13,10 @@ const links = [
 ];
 ---
 
-<nav class="w-full flex justify-center bg-white">
-  <div class="max-w-md font-jetbrains text-xs flex h-10 w-full px-4 md:px-0">
-    <!-- Desktop Menu -->
-    <ul class="w-full gap-x-10 justify-center items-center hidden md:flex">
+<nav class="w-full bg-white">
+  <div class="max-w-xl mx-auto font-jetbrains text-xs flex h-10 w-full px-4 md:px-0 items-center justify-between relative">
+    <!-- Desktop Menu: links centered -->
+    <ul class="absolute transform left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-x-10">
       {links.map(link => (
         <li>
           <a
@@ -27,8 +27,12 @@ const links = [
           </a>
         </li>
       ))}
-      <LangSwitch />
     </ul>
+
+    <!-- Language Switcher: always on right -->
+    <div class="hidden md:flex ml-auto">
+      <LangSwitch />
+    </div>
 
     <!-- Mobile Menu Button -->
     <div class="flex md:hidden w-full justify-center items-center">
@@ -37,7 +41,9 @@ const links = [
         class="p-2 text-lg focus:outline-none text-gray-800"
         aria-label="Toggle menu"
       >
-        ☰
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
       </button>
     </div>
   </div>
