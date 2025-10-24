@@ -70,3 +70,7 @@
 
     --breakpoint-xs: 30rem;
 }
+
+.hover-link {
+    @apply text-blue-500 hover:visited:text-purple-600 hover:underline;
+}

@@ -3,8 +3,8 @@ const { currentLocale, url } = Astro;
 
 // Define your supported locales
 const locales = [
-  { code: "en", label: "EN" },
-  { code: "ja", label: "JA" },
+	{ code: "en", label: "EN" },
+	{ code: "ja", label: "JA" },
 ];
 
 // Filter out the current one
@@ -15,7 +15,7 @@ const otherLocales = locales.filter((l) => l.code !== currentLocale);
   <button
     id="lang-btn"
     type="button"
-    class="inline-flex justify-center items-center gap-x-1 rounded-md px-2 py-0.5 text-xs font-medium"
+    class="inline-flex justify-center items-center gap-x-1 rounded-md px-2 py-0.5 text-xs font-medium cursor-pointer hover:text-blue-500"
     aria-expanded="false"
     aria-haspopup="true"
   >
@@ -28,7 +28,7 @@ const otherLocales = locales.filter((l) => l.code !== currentLocale);
   <!-- Dropdown menu -->
   <div
     id="lang-menu"
-    class="hidden absolute right-0 z-10 mt-2 border border-neutral-200 origin-top-right bg-white"
+    class="hidden absolute right-0 z-10 mt-2 border border-neutral-200 origin-top-right bg-white cursor-pointer"
     role="menu"
     aria-orientation="vertical"
     aria-labelledby="lang-btn"

@@ -1,7 +1,10 @@
 {
-    "nav": {
-        "home": "Home",
-        "about": "About",
-        "lyrics": "Lyrics"
-    }
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "lyrics": "Lyrics"
+  },
+  "backButton": {
+    "content": "Back"
+  }
 }

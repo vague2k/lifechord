@@ -1,8 +1,8 @@
 ---
 import "@/styles/global.css";
-import { Image } from "astro:assets";
 import Navbar from "@/components/Navbar.astro";
 import PageTitle from "@/components/PageTitle.astro";
+import BackButton from "@/components/BackButton.astro";
 
 import { localizedHref } from "@/utils";
 const { currentLocale } = Astro;
@@ -23,7 +23,8 @@ const { currentLocale } = Astro;
         <Navbar />
         <main class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5 sm:gap-y-10">
             <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-lg text-left">
-                <a class="hover:text-blue-400" href={localizedHref("/lyrics/a-collection-of-sounds", currentLocale)}>心に響き渡る音と旋律のコレクション</a>
+                <BackButton />
+                <a class="hover-link" href={localizedHref("/lyrics/a-collection-of-sounds", currentLocale)}>心に響き渡る音と旋律のコレクション</a>
             </div>
         </main>
     </body>

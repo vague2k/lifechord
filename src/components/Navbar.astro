@@ -20,7 +20,7 @@ const links = [
       {links.map(link => (
         <li>
           <a
-            class="hover:text-blue-400"
+            class="hover:text-blue-500 hover:underline"
             href={localizedHref(link.href, currentLocale)}
           >
             {t.nav[link.key]}
@@ -54,7 +54,7 @@ const links = [
   {links.map(link => (
     <a
       href={localizedHref(link.href, currentLocale)}
-      class="py-2 px-3 text-sm hover:text-blue-400"
+      class="py-2 px-3 text-sm hover:text-blue-500 hover:underline"
     >
         {t.nav[link.key]}
     </a>

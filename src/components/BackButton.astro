@@ -1,0 +1,28 @@
+---
+import en from "@/i18n/en.json";
+import ja from "@/i18n/ja.json";
+const { currentLocale } = Astro;
+const t = { en, ja }[currentLocale];
+---
+<button id="back-btn" class="flex items-center gap-x-1 text-xs font-jetbrains font-medium cursor-pointer hover:underline">
+    <svg xmlns="http://www.w3.org/2000/svg" class="size-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    {t.backButton["content"]}
+</button>
+<script define:vars={{currentLocale}}>
+    // locale-aware back navigation
+    document.getElementById("back-btn")?.addEventListener("click", () => {
+    const parts = window.location.pathname.split("/").filter(Boolean);
+
+    // if first part is locale, remove it temporarily
+    if (parts[0] === currentLocale) parts.shift();
+
+    // remove last segment
+    parts.pop();
+
+    // rebuild URL keeping locale prefix
+    const parent = "/" + [currentLocale, ...parts].join("/");
+    window.location.href = parent || "/" + currentLocale;
+    });
+</script>
