@@ -1,8 +1,15 @@
 ---
+import LangSwitch from "@/components/LangSwitch.astro";
+import en from "@/i18n/en.json";
+import ja from "@/i18n/ja.json";
+
+import { localizedHref } from "@/utils";
+const { currentLocale } = Astro;
+const t = { en, ja }[currentLocale];
 const links = [
-	{ name: "Home", href: "/" },
-	{ name: "About", href: "/about" },
-	{ name: "Lyrics", href: "/lyrics" },
+	{ key: "home", href: "/" },
+	{ key: "about", href: "/about" },
+	{ key: "lyrics", href: "/lyrics" },
 ];
 ---
 
@@ -14,12 +21,13 @@ const links = [
         <li>
           <a
             class="hover:text-blue-400"
-            href={link.href}
+            href={localizedHref(link.href, currentLocale)}
           >
-            {link.name}
+            {t.nav[link.key]}
           </a>
         </li>
       ))}
+      <LangSwitch />
     </ul>
 
     <!-- Mobile Menu Button -->
@@ -39,10 +47,10 @@ const links = [
 <div id="mobile-menu" class="hidden font-jetbrains text-center border-neutral-200 border border-r-0 flex-col items-center md:hidden">
   {links.map(link => (
     <a
-      href={link.href}
+      href={localizedHref(link.href, currentLocale)}
       class="py-2 px-3 text-sm hover:text-blue-400"
     >
-      {link.name}
+        {t.nav[link.key]}
     </a>
   ))}
 </div>

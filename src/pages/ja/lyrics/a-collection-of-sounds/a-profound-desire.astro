@@ -1,0 +1,64 @@
+---
+import "@/styles/global.css";
+import Navbar from "@/components/Navbar.astro";
+import PageTitle from "@/components/PageTitle.astro";
+---
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <PageTitle page="Lyrics"/>
+        <!-- Standard favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <!-- IOS / android favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+        <link rel="manifest" href="/favicon/site.webmanifest">
+    </head>
+    <body class="min-h-screen">
+        <Navbar />
+        <main class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5 sm:gap-y-10">
+            <audio controls>
+                <source src="/audio/a-profound-desire-rehearse.mp3" type="audio/mpeg">
+            </audio>
+            <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-lg text-center">
+                <span class="gap-y-2">
+                    <p>私は持っている コレクションを 音と旋律の 心を通して叫ぶ</p>
+                    <p>裂けるコードを 通して 声が聞かれる</p>
+                </span>
+
+                <span class="gap-y-2">
+                    <p>私の魂の目撃者となり、私と分かち合う</p>
+                    <p>誰も共有できるとは思わなかったすべてのことの中で</p>
+                    <p>耐えたすべての棘と私たちが踏み出すすべての一歩が</p>
+                    <p>私たちの思いが永遠に生きることを望む</p>
+                </span>
+                <span class="gap-y-2">
+                    <p>私たちを深く愛してくれる人々と、その瞬間大切にしている人々の中に</p>
+                    <p>思いやりと希望に満ちた一生続くかもしれない瞬間がある</p>
+                    <p>記憶が叫ぶ</p>
+                    <p>「私はかつてここにいて、できる限り生きた」と</p>
+                </span>
+                <span class="gap-y-2">
+                    <p>この息の中で</p>
+                    <p>私は分かち合い、苦しみ、持っているすべてを与えることを選ぶ</p>
+                    <p>周りの人々に示すために</p>
+                    <p>耐えたすべての棘、踏み出したすべての一歩、歩んだすべての道が</p>
+                    <p>共感する力を再構築する必要があるコミュニティへ導く</p>
+                </span>
+                <span class="gap-y-2">
+                    <p>私は持っている コレクションを 音と旋律の 心を通して叫ぶ</p>
+                    <p>裂けるコードを 通して 声が聞かれる</p>
+                </span>
+                <span class="gap-y-2">
+                    <p>心と人生に響く内なる声</p>
+                    <p>私たちが探し求めることを思い出させる</p>
+                    <p>人生を生きる価値を作る特別なものを</p>
+                </span>
+                <span class="gap-y-2">
+                    <p>つながり</p>
+                </span>
+            </div>
+        </main>
+    </body>
+</html>

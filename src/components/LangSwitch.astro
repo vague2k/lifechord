@@ -1,0 +1,65 @@
+---
+const { currentLocale, url } = Astro;
+
+// Define your supported locales
+const locales = [
+  { code: "en", label: "EN" },
+  { code: "ja", label: "JA" },
+];
+
+// Filter out the current one
+const otherLocales = locales.filter((l) => l.code !== currentLocale);
+---
+<div class="relative inline-block text-left">
+  <!-- Button -->
+  <button
+    id="lang-btn"
+    type="button"
+    class="inline-flex justify-center items-center gap-x-1 rounded-md px-2 py-0.5 text-xs font-medium"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    {locales.find(l => l.code === currentLocale)?.label ?? currentLocale.toUpperCase()}
+    <svg class="-mr-1 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+    </svg>
+  </button>
+
+  <!-- Dropdown menu -->
+  <div
+    id="lang-menu"
+    class="hidden absolute right-0 z-10 mt-2 border border-neutral-200 origin-top-right bg-white"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="lang-btn"
+  >
+    {otherLocales.map(locale => {
+      const newPath = url.pathname.replace(`/${currentLocale}`, `/${locale.code}`);
+      return (
+        <a
+          href={newPath}
+          class="block px-4 py-2 text-xs text-gray-700 hover:text-blue-500"
+          role="menuitem"
+        >
+          {locale.label}
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById("lang-btn");
+  const menu = document.getElementById("lang-menu");
+
+  btn?.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+
+  // Optional: click outside to close
+  document.addEventListener("click", (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  });
+</script>
