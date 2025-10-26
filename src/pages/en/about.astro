@@ -1,5 +1,7 @@
 ---
 import "@/styles/global.css";
+import { Image } from "astro:assets";
+import MicGrab from "@/mic_grab.png";
 import Navbar from "@/components/Navbar.astro";
 import PageTitle from "@/components/PageTitle.astro";
 import BackButton from "@/components/BackButton.astro";
@@ -20,6 +22,7 @@ import BackButton from "@/components/BackButton.astro";
         <Navbar />
         <main class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5">
             <BackButton />
+            <Image class="w-full max-w-2xl object-contain" loading="eager" src={MicGrab} alt="lifechord banner"/>
             <div class="flex flex-col gap-y-3 font-jetbrains text-xs leading-relaxed max-w-md w-full text-center">
                 <p>This band is about hope and compassion.</p>
                 <p>Do you hate how much the world sucks? Do you want to make the most of it anyways?</p>
