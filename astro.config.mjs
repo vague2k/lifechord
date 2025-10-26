@@ -17,8 +17,5 @@ export default defineConfig({
     fallback: {
       ja: "en"
     },
-    routing: {
-        prefixDefaultLocale: true
-    }
   },
 });
