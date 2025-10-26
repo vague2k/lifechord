@@ -1,26 +1,38 @@
 ---
+import LangSwitch from "@/components/LangSwitch.astro";
+import en from "@/i18n/en.json";
+import ja from "@/i18n/ja.json";
+
+import { localizedHref } from "@/utils";
+const { currentLocale } = Astro;
+const t = { en, ja }[currentLocale];
 const links = [
-	{ name: "Home", href: "/" },
-	{ name: "About", href: "/about" },
-	{ name: "Lyrics", href: "/lyrics" },
+	{ key: "home", href: "/" },
+	{ key: "about", href: "/about" },
+	{ key: "lyrics", href: "/lyrics" },
 ];
 ---
 
-<nav class="w-full flex justify-center bg-white">
-  <div class="max-w-md font-jetbrains text-xs flex h-10 w-full px-4 md:px-0">
-    <!-- Desktop Menu -->
-    <ul class="w-full gap-x-10 justify-center items-center hidden md:flex">
+<nav class="w-full bg-white">
+  <div class="max-w-xl mx-auto font-jetbrains text-xs flex h-10 w-full px-4 md:px-0 items-center justify-between relative">
+    <!-- Desktop Menu: links centered -->
+    <ul class="absolute transform left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-x-10">
       {links.map(link => (
         <li>
           <a
-            class="hover:text-blue-400"
-            href={link.href}
+            class="hover:text-blue-500 hover:underline"
+            href={localizedHref(link.href, currentLocale)}
           >
-            {link.name}
+            {t.nav[link.key]}
           </a>
         </li>
       ))}
     </ul>
+
+    <!-- Language Switcher: always on right -->
+    <div class="hidden md:flex ml-auto">
+      <LangSwitch />
+    </div>
 
     <!-- Mobile Menu Button -->
     <div class="flex md:hidden w-full justify-center items-center">
@@ -29,7 +41,9 @@ const links = [
         class="p-2 text-lg focus:outline-none text-gray-800"
         aria-label="Toggle menu"
       >
-        ☰
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
       </button>
     </div>
   </div>
@@ -39,10 +53,10 @@ const links = [
 <div id="mobile-menu" class="hidden font-jetbrains text-center border-neutral-200 border border-r-0 flex-col items-center md:hidden">
   {links.map(link => (
     <a
-      href={link.href}
-      class="py-2 px-3 text-sm hover:text-blue-400"
+      href={localizedHref(link.href, currentLocale)}
+      class="py-2 px-3 text-sm hover:text-blue-500 hover:underline"
     >
-      {link.name}
+        {t.nav[link.key]}
     </a>
   ))}
 </div>

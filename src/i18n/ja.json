@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "紹介",
+    "lyrics": "歌詞"
+  },
+  "backButton": {
+    "content": "前のページ"
+  }
+}
