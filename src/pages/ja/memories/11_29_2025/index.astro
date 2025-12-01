@@ -36,13 +36,13 @@ const images = Object.values(raw).map((m) => {
             <p class="py-5 flex flex-col font-jetbrains text-xs leading-relaxed max-w-md text-center">
                 <span>Ramona Banos と Sal Rispoli によって撮影された写真</span>
                 <span>Churchill's Pub にて、2025年11月29日</span>
-
             <p>
-            <div class="max-w-7xl py-10">
-                <div class="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+            <div class="max-w-3xl py-10">
+                <div class="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-4 lg:grid-cols-5">
                     {images.map(({ meta, isWide }, index) => (
-                        <div class={`${isWide ? "col-span-2" : ""}`}>
+                        <div class={`h-full overflow-hidden ${isWide ? "col-span-2" : ""}`}>
                             <Image
+                                class="h-full w-full object-cover"
                                 src={meta}
                                 alt={`Band photo ${index + 1}`}
                             />
