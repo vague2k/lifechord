@@ -22,9 +22,10 @@ const { currentLocale } = Astro;
     <body class="min-h-screen">
         <Navbar />
         <main class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5 sm:gap-y-10">
-            <div class="flex flex-col gap-y-6 font-jetbrains text-xs leading-relaxed max-w-lg text-left">
+            <div class="flex flex-col gap-y-4 font-jetbrains text-xs leading-relaxed max-w-lg text-left">
                 <BackButton />
-                <a class="hover-link" href={localizedHref("/memories/11_29_2025", currentLocale)}>11/29/2025</a>
+                <a class="hover-link" href={localizedHref("/memories/11_29_2025", currentLocale)}>2025/11/29</a>
+                <a class="hover-link" href={localizedHref("/memories/10_18_2025", currentLocale)}>2025/10/18</a>
             </div>
         </main>
     </body>

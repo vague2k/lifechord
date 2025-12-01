@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar.astro";
 import PageTitle from "@/components/PageTitle.astro";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import BackButton from "@/components/BackButton.astro";
 
 const raw = import.meta.glob<{ default: ImageMetadata }>(
     "/public/band_pictures/11-29-2025/*.{jpg,jpeg,png,webp}",
@@ -33,6 +34,7 @@ const images = Object.values(raw).map((m) => {
     <body class="min-h-screen">
         <Navbar />
         <main class="flex flex-col items-center p-10">
+            <BackButton />
             <p class="py-5 flex flex-col font-jetbrains text-xs leading-relaxed max-w-md text-center">
                 <span>Ramona Banos と Sal Rispoli によって撮影された写真</span>
                 <span>Churchill's Pub にて、2025年11月29日</span>
