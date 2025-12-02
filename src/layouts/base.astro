@@ -1,14 +1,24 @@
 ---
-const { currentLocale } = Astro;
-const target = `/${currentLocale}`;
+const { page } = Astro.props;
+const isDev = import.meta.env.MODE === "development";
+
+const siteName = "Lifechord";
+let fullTitle;
+
+if (!page) {
+    // Home page
+    fullTitle = `${isDev ? "[DEV] " : ""}${siteName}`;
+} else {
+    // Any other page
+    fullTitle = `${isDev ? "[DEV] " : ""}${siteName} - ${page}`;
+}
 ---
 
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="refresh" content={`0; url=${target}`} />
-        <title>Lifechord</title>
+        <title>{fullTitle}</title>
         <!-- Standard favicon -->
         <link
             rel="icon"
@@ -30,4 +40,7 @@ const target = `/${currentLocale}`;
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
     </head>
+    <body class="min-h-screen">
+        <slot />
+    </body>
 </html>

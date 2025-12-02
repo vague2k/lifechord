@@ -1,57 +1,52 @@
 ---
 import "@/styles/global.css";
 import Navbar from "@/components/Navbar.astro";
-import PageTitle from "@/components/PageTitle.astro";
+import Base from "@/layouts/base.astro";
 import BackButton from "@/components/BackButton.astro";
 ---
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <PageTitle page="Lyrics"/>
-        <!-- Standard favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-        <!-- IOS / android favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-        <link rel="manifest" href="/favicon/site.webmanifest">
-    </head>
-    <body class="min-h-screen">
-        <Navbar />
-        <main class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5 sm:gap-y-10">
-            <BackButton />
-            <audio controls>
-                <source src="/audio/indifference-rehearse.mp3" type="audio/mpeg">
-            </audio>
-            <div class="flex flex-col gap-y-4 font-jetbrains text-xs leading-relaxed max-w-lg text-center">
-                <span class="gap-y-2">
-                    <p>こんなあなたを見るのは、胸が引き裂かれるように辛い</p>
-                    <p>涙を流しながら切に願い、自分に言い聞かせている</p>
-                    <p>「誰も私を見つけられない… それに、ひとりのほうがいいのかもしれない」と</p>
-                </span>
-                <span class="gap-y-2">
-                    <p>自分に嘘をつき、周りの人々を軽蔑していると言い聞かせる</p>
-                </span>
-                <span class="gap-y-2">
-                    <p>とても誤解されている（どれほど重いことだろう）</p>
-                    <p>とても無関心（硬くなった心を抱えて）</p>
-                    <p>なんて近視眼的なのだろう（もし自分を越えて見られたなら）</p>
-                    <p>そして、物事は変わるのだと受け入れることを選ぶ</p>
-                </span>
-                <span class="gap-y-2">
-                    <p>この人間のつながりたいという欲求</p>
-                    <p>見てもらいたいという願い</p>
-                    <p>声を聞いてもらいたいという願い</p>
-                </span>
-                <span class="gap-y-2">
-                    <p>私たちは去る方法を学ぶ必要がある</p>
-                    <p>私たちは周りを見る方法を学ぶ必要がある</p>
-                    <p>すべてを受け入れるために</p>
-                </span>
-                <span class="gap-y-2">
-                    <p>そして、バラの香りを楽しむ</p>
-                </span>
-            </div>
-        </main>
-    </body>
-</html>
+
+<Base page="Lyrics">
+    <Navbar />
+    <main
+        class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5 sm:gap-y-10"
+    >
+        <BackButton />
+        <audio controls>
+            <source src="/audio/indifference-rehearse.mp3" type="audio/mpeg" />
+        </audio>
+        <div
+            class="flex flex-col gap-y-4 font-jetbrains text-xs leading-relaxed max-w-lg text-center"
+        >
+            <span class="gap-y-2">
+                <p>こんなあなたを見るのは、胸が引き裂かれるように辛い</p>
+                <p>涙を流しながら切に願い、自分に言い聞かせている</p>
+                <p>
+                    「誰も私を見つけられない…
+                    それに、ひとりのほうがいいのかもしれない」と
+                </p>
+            </span>
+            <span class="gap-y-2">
+                <p>自分に嘘をつき、周りの人々を軽蔑していると言い聞かせる</p>
+            </span>
+            <span class="gap-y-2">
+                <p>とても誤解されている（どれほど重いことだろう）</p>
+                <p>とても無関心（硬くなった心を抱えて）</p>
+                <p>なんて近視眼的なのだろう（もし自分を越えて見られたなら）</p>
+                <p>そして、物事は変わるのだと受け入れることを選ぶ</p>
+            </span>
+            <span class="gap-y-2">
+                <p>この人間のつながりたいという欲求</p>
+                <p>見てもらいたいという願い</p>
+                <p>声を聞いてもらいたいという願い</p>
+            </span>
+            <span class="gap-y-2">
+                <p>私たちは去る方法を学ぶ必要がある</p>
+                <p>私たちは周りを見る方法を学ぶ必要がある</p>
+                <p>すべてを受け入れるために</p>
+            </span>
+            <span class="gap-y-2">
+                <p>そして、バラの香りを楽しむ</p>
+            </span>
+        </div>
+    </main>
+</Base>

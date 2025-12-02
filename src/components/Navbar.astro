@@ -15,58 +15,79 @@ const links = [
 ---
 
 <nav class="w-full bg-white">
-  <div class="max-w-xl mx-auto font-jetbrains text-xs flex h-10 w-full px-4 md:px-0 items-center justify-between relative">
-    <!-- Desktop Menu: links centered -->
-    <ul class="absolute transform left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-x-10">
-      {links.map(link => (
-        <li>
-          <a
-            class="hover:text-blue-500 hover:underline"
-            href={localizedHref(link.href, currentLocale)}
-          >
-            {t.nav[link.key]}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div
+        class="max-w-xl mx-auto font-jetbrains text-xs flex h-10 w-full px-4 md:px-0 items-center justify-between relative"
+    >
+        <!-- Desktop Menu: links centered -->
+        <ul
+            class="absolute transform left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-x-10"
+        >
+            {
+                links.map((link) => (
+                    <li>
+                        <a
+                            class="hover:text-blue-500 hover:underline"
+                            href={localizedHref(link.href, currentLocale)}
+                        >
+                            {t.nav[link.key]}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
 
-    <!-- Language Switcher: always on right -->
-    <div class="hidden md:flex ml-auto">
-      <LangSwitch />
-    </div>
+        <!-- Language Switcher: always on right -->
+        <div class="hidden md:flex ml-auto">
+            <LangSwitch />
+        </div>
 
-    <!-- Mobile Menu Button -->
-    <div class="flex md:hidden w-full justify-center items-center">
-      <button
-        id="menu-btn"
-        class="p-2 text-lg focus:outline-none text-gray-800"
-        aria-label="Toggle menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-      </button>
+        <!-- Mobile Menu Button -->
+        <div class="flex md:hidden w-full justify-center items-center">
+            <button
+                id="menu-btn"
+                class="p-2 text-lg focus:outline-none text-gray-800"
+                aria-label="Toggle menu"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-4"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+                </svg>
+            </button>
+        </div>
     </div>
-  </div>
 </nav>
 
 <!-- Mobile Dropdown -->
-<div id="mobile-menu" class="hidden font-jetbrains text-center border-neutral-200 border border-r-0 flex-col items-center md:hidden">
-  {links.map(link => (
-    <a
-      href={localizedHref(link.href, currentLocale)}
-      class="py-2 px-3 text-sm hover:text-blue-500 hover:underline"
-    >
-        {t.nav[link.key]}
-    </a>
-  ))}
+<div
+    id="mobile-menu"
+    class="hidden font-jetbrains text-center border-neutral-200 border border-r-0 flex-col items-center md:hidden"
+>
+    {
+        links.map((link) => (
+            <a
+                href={localizedHref(link.href, currentLocale)}
+                class="py-2 px-3 text-sm hover:text-blue-500 hover:underline"
+            >
+                {t.nav[link.key]}
+            </a>
+        ))
+    }
 </div>
 
 <script>
-  const btn = document.getElementById("menu-btn");
-  const menu = document.getElementById("mobile-menu");
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
 
-  btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+    });
 </script>

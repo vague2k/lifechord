@@ -1,32 +1,32 @@
 ---
 import "@/styles/global.css";
 import Navbar from "@/components/Navbar.astro";
-import PageTitle from "@/components/PageTitle.astro";
+import Base from "@/layouts/base.astro";
 import BackButton from "@/components/BackButton.astro";
 
 import { localizedHref } from "@/utils";
 const { currentLocale } = Astro;
 ---
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <PageTitle page="Memories"/>
-        <!-- Standard favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-        <!-- IOS / android favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-        <link rel="manifest" href="/favicon/site.webmanifest">
-    </head>
-    <body class="min-h-screen">
-        <Navbar />
-        <main class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5 sm:gap-y-10">
-            <div class="flex flex-col gap-y-4 font-jetbrains text-xs leading-relaxed max-w-lg text-left">
-                <BackButton />
-                <a class="hover-link" href={localizedHref("/memories/11_29_2025", currentLocale)}>2025/11/29</a>
-                <a class="hover-link" href={localizedHref("/memories/10_18_2025", currentLocale)}>2025/10/18</a>
-            </div>
-        </main>
-    </body>
-</html>
+
+<Base page="Memories">
+    <Navbar />
+    <main
+        class="min-h-screen flex flex-col justify-center items-center p-10 md:pt-0 gap-y-5 sm:gap-y-10"
+    >
+        <div
+            class="flex flex-col gap-y-4 font-jetbrains text-xs leading-relaxed max-w-lg text-left"
+        >
+            <BackButton />
+            <a
+                class="hover-link"
+                href={localizedHref("/memories/11_29_2025", currentLocale)}
+                >2025/11/29</a
+            >
+            <a
+                class="hover-link"
+                href={localizedHref("/memories/10_18_2025", currentLocale)}
+                >2025/10/18</a
+            >
+        </div>
+    </main>
+</Base>

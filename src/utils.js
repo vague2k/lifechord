@@ -1,3 +1,3 @@
 export function localizedHref(path, locale) {
-  return `/${locale}${path === "/" ? "" : path}`;
+    return `/${locale}${path === "/" ? "" : path}`;
 }
