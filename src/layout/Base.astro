@@ -1,0 +1,104 @@
+---
+import "@/styles/global.css";
+import { Image } from "astro:assets";
+import Birds from "../images/birds.png";
+
+const { page } = Astro.props;
+const isDev = import.meta.env.MODE === "development";
+
+const siteName = "Lifechord";
+let fullTitle;
+
+if (!page) {
+    // Home page
+    fullTitle = `${isDev ? "[DEV] " : ""}${siteName}`;
+} else {
+    // Any other page
+    fullTitle = `${isDev ? "[DEV] " : ""}${siteName} - ${page}`;
+}
+
+// highlights the page you're currently on
+const path = Astro.url.pathname;
+const navClass = (href) =>
+    path === href || path.startsWith(href + "/")
+        ? "nav-item text-primary underline"
+        : "nav-item text-foreground/60";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{fullTitle}</title>
+    </head>
+    <body class="h-screen">
+        <main class="pt-30 flex flex-col justify-center items-center">
+            <div class="w-[650px] space-y-1">
+                <div class="w-full space-y-1 mb-3">
+                    <Image
+                        width={650}
+                        height={220}
+                        src={Birds}
+                        layout="full-width"
+                        alt="birds united"
+                    />
+                    <div
+                        class="relative bg-foreground/5 border border-l-0 border-r-0 border-foreground/30 h-5 w-full flex items-center overflow-clip"
+                    >
+                        <a href="/" class={navClass("/")}>HOME</a>
+                        <a href="/news" class={navClass("/news")}>NEWS</a>
+                        <a href="/about" class={navClass("/about")}>ABOUT</a>
+                        <a href="/store" class={navClass("/store")}>STORE</a>
+                        <a href="/lyrics" class={navClass("/lyrics")}>LYRICS</a>
+                        <a href="/memories" class={navClass("/memories")}
+                            >MEMORIES</a
+                        >
+                        <a href="/contact" class={navClass("/contact")}
+                            >CONTACT</a
+                        >
+                        <span
+                            class="absolute right-[150px] rotate-20 w-1 h-15 bg-foreground/10"
+                        ></span>
+                        <span
+                            class="absolute right-[143px] rotate-20 w-1 h-15 bg-foreground/10"
+                        ></span>
+                        <span
+                            id="clock"
+                            class="absolute font-medium right-2 text-2xs"
+                        ></span>
+                        <span
+                            class="absolute right-0.5 rotate-20 w-[134px] h-24 bg-foreground/10"
+                        ></span>
+                    </div>
+                </div>
+                <div class="w-[98%] mx-auto">
+                    <slot />
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
+
+<script is:inline>
+    function updateClock() {
+        const now = new Date();
+
+        const formatter = new Intl.DateTimeFormat("en-US", {
+            timeZone: "America/New_York",
+            year: "2-digit",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "numeric",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true,
+        });
+
+        document.getElementById("clock").textContent = formatter.format(now);
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+</script>

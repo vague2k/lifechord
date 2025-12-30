@@ -3,6 +3,7 @@
 @import "./fonts/font-jetbrains.css";
 
 @theme {
+    --font-helvetica: "Helvetica", sans-serif;
     --font-jetbrains: "JetBrains Mono", serif;
     --breakpoint-xs: 30rem;
     --text-2xs: 10px;
@@ -31,9 +32,19 @@
     }
 }
 
+.href-back {
+    @apply text-2xs
+    text-foreground/60
+    underline
+    hover:text-primary
+    hover:underline
+    cursor-pointer
+}
 .nav-item {
     @apply text-2xs
     hover:bg-foreground/10
+    hover:text-primary
+    hover:underline
     cursor-pointer
     px-1.5
 };
