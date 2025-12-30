@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+
+const { src, alt = "", class: className = "" } = Astro.props;
+---
+
+<div class="lightbox-wrapper">
+    <!-- image itself acts as the button trigger -->
+    <Image
+        src={src}
+        alt={alt}
+        class={`cursor-zoom-in ${className}`}
+        data-lightbox-trigger
+    />
+
+    <div
+        class="flex fixed inset-0 justify-center bg-foreground/30 items-center z-50"
+        data-lightbox
+        hidden
+    >
+        <Image
+            class="max-w-[70vw] max-h-[70vh] object-contain"
+            src={src}
+            alt={alt}
+        />
+    </div>
+</div>
+
+<script>
+    document.addEventListener("click", (e) => {
+        const trigger = e.target.closest("[data-lightbox-trigger]");
+        if (trigger) {
+            trigger.nextElementSibling.hidden = false;
+            document.body.style.overflow = "hidden";
+            return;
+        }
+
+        const overlay = e.target.closest("[data-lightbox]");
+        if (overlay) {
+            overlay.hidden = true;
+            document.body.style.overflow = "";
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            document
+                .querySelectorAll("[data-lightbox]")
+                .forEach((el) => (el.hidden = true));
+            document.body.style.overflow = "";
+        }
+    });
+</script>

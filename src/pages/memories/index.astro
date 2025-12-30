@@ -1,0 +1,17 @@
+---
+import "@/styles/global.css";
+import BaseLayout from "@/layout/Base.astro";
+---
+
+<BaseLayout page="Memories">
+    <a href="/" class="href-back">Back to home</a>
+    <p class="mt-3 text-primary text-xs">Memories!</p>
+    <div class="flex flex-col text-2xs text-left">
+        <a class="href-song-lyrics" href="/memories/11-29-2025"
+            >November 29th, 2025</a
+        >
+        <a class="href-song-lyrics" href="/memories/10-18-2025"
+            >October 18th, 2025 (first show!)</a
+        >
+    </div>
+</BaseLayout>
