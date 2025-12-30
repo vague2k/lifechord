@@ -32,6 +32,10 @@
     }
 }
 
+::view-transition-group(root) {
+  animation: none;
+}
+
 .href-song-lyrics {
     @apply text-2xs
     text-foreground/60

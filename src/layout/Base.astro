@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import { ClientRouter } from "astro:transitions";
 import { Image } from "astro:assets";
 import Home from "../images/home.gif";
 
@@ -32,6 +33,7 @@ const navClass = (href) =>
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{fullTitle}</title>
+        <ClientRouter />
     </head>
     <body class="h-screen">
         <main class="pt-30 flex flex-col justify-center items-center">
@@ -43,6 +45,7 @@ const navClass = (href) =>
                         src={Home}
                         layout="full-width"
                         alt="moments"
+                        transition:persist
                     />
                     <div
                         class="relative bg-foreground/5 border border-l-0 border-r-0 border-foreground/30 h-5 w-full flex items-center overflow-clip"
