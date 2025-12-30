@@ -85,7 +85,12 @@ const navClass = (href) =>
 </html>
 
 <script is:inline>
+    let clockInterval;
+
     function updateClock() {
+        const clock = document.getElementById("clock");
+        if (!clock) return;
+
         const now = new Date();
 
         const formatter = new Intl.DateTimeFormat("en-US", {
@@ -99,9 +104,18 @@ const navClass = (href) =>
             hour12: true,
         });
 
-        document.getElementById("clock").textContent = formatter.format(now);
+        clock.textContent = formatter.format(now);
     }
 
-    updateClock();
-    setInterval(updateClock, 1000);
+    function startClock() {
+        updateClock(); // update immediately
+        clearInterval(clockInterval);
+        clockInterval = setInterval(updateClock, 1000);
+    }
+
+    // init
+    document.addEventListener("DOMContentLoaded", startClock);
+
+    // runs on every Astro client-side navigation
+    document.addEventListener("astro:page-load", startClock);
 </script>
