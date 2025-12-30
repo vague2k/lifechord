@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css";
 import { Image } from "astro:assets";
-import Birds from "../images/birds.png";
+import Home from "../images/home.gif";
 
 const { page } = Astro.props;
 const isDev = import.meta.env.MODE === "development";
@@ -39,10 +39,10 @@ const navClass = (href) =>
                 <div class="w-full space-y-1 mb-3">
                     <Image
                         width={650}
-                        height={220}
-                        src={Birds}
+                        height={250}
+                        src={Home}
                         layout="full-width"
-                        alt="birds united"
+                        alt="moments"
                     />
                     <div
                         class="relative bg-foreground/5 border border-l-0 border-r-0 border-foreground/30 h-5 w-full flex items-center overflow-clip"
