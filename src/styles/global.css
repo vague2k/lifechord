@@ -32,6 +32,13 @@
     }
 }
 
+.href-song-lyrics {
+    @apply text-2xs
+    text-foreground/60
+    underline
+    hover:text-foreground
+}
+
 .href-back {
     @apply text-2xs
     text-foreground/60
