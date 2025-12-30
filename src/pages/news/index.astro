@@ -1,6 +1,12 @@
 ---
 import "@/styles/global.css";
 import BaseLayout from "@/layout/Base.astro";
+import Lightbox from "../../components/Lightbox.astro";
+
+// December 30th, 2025 article images
+import firstShirtFront from "@/images/news/12-30-2025/front.jpeg"
+import firstShirtBack from "@/images/news/12-30-2025/back.jpeg"
+import firstShirtSheet from "@/images/news/12-30-2025/sheet.jpeg"
 ---
 
 <BaseLayout page="News">
@@ -35,8 +41,25 @@ import BaseLayout from "@/layout/Base.astro";
                 We also finally printed a first run of merch, navy blue shirts with white and gold print and...
                 <span class="text-primary">WE SOLD OUT</span> It really warmed our hearts to see that so many people no only loved our set
                 but liked it enough to spend their hard earned cash on us. If you're one of these people, thank you for the kind words and
-                support it means a great deal to us.
+                support it means a great deal to us. Here's some pics!
             </p>
+            <div class="flex">
+                <Lightbox
+                    class="h-[150px]"
+                    src={firstShirtFront}
+                    alt="front of shirt"
+                />
+                <Lightbox
+                    class="h-[150px]"
+                    src={firstShirtBack}
+                    alt="back of shirt"
+                />
+                <Lightbox
+                    class="h-[150px]"
+                    src={firstShirtSheet}
+                    alt="merch sheet"
+                />
+            </div>
             <p>
                 So, what's next? Well we're planning on recording in January. We have some dates planned already so the music should be out
                 sooner than you'd expect. We're thinking maybe printing a new shirt design, along with putting the recorded music on CDs
