@@ -36,6 +36,10 @@
   animation: none;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 .href-song-lyrics {
     @apply text-2xs
     text-foreground/60
