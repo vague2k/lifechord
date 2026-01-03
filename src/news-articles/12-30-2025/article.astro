@@ -1,0 +1,77 @@
+---
+import "@/styles/global.css";
+import Lightbox from "@/components/Lightbox.astro";
+
+import firstShirtFront from "@/news-articles/12-30-2025/front.jpeg";
+import firstShirtBack from "@/news-articles/12-30-2025/back.jpeg";
+import firstShirtSheet from "@/news-articles/12-30-2025/sheet.jpeg";
+---
+
+<p class="mt-3 text-primary text-xs">
+    December 30th, 2025 - "Why is everything blue?"
+</p>
+<div class="flex flex-col gap-y-2 text-2xs text-left">
+    <p>
+        Yeah... long story short, I got bored. For a couple weeks now i've been
+        looking at the old version of the site and thought it was kinda plain, a
+        little dull even. It was just a lot of white everywhere, some things
+        like navigating was a little cumbersome and inconsistent... And so like
+        all sane people do I burned the whole thing and started from scratch!
+        Well not really from scratch I mean having the old files helped
+        tremendously, I probably spent about 5 man hours working on what you're
+        seeing right now? I think? hmm... I hope.... anyways, not bad huh?
+    </p>
+    <p>
+        I even included a way to view memories (aka images if you wanna be like
+        that) in full! You can try it out now if you want, just click memories
+        in the navigation bar at the top of the page and you'll get to see all
+        of our pretty faces in full HD.
+    </p>
+    <p>
+        In other news, We just played our 3rd show this past Saturday, and my
+        god what a show. Jeff's really been putting in work to give back, $10
+        for a 12 band bill? That's crazy! Barricade was awesome, it's always fun
+        to put dead weight onto my friends during the side the side part. I
+        watched Retina for a bit and they covered Shai Hulud for about 30
+        seconds. I didn't realize they were covering "Soley Concentrating on The
+        Negative Aspects of Life" until the callout, and when it clicked I flew
+        to the dancefloor. That's had to be the fastest I've ever moved, at
+        least according to some people who saw me from the across the hall.
+        Contention was always fun to watch aswell.
+    </p>
+    <p>
+        We also finally printed a first run of merch, navy blue shirts with
+        white and gold print and...
+        <span class="text-primary">WE SOLD OUT</span> It really warmed our hearts
+        to see that so many people no only loved our set but liked it enough to spend
+        their hard earned cash on us. If you're one of these people, thank you for
+        the kind words and support it means a great deal to us. Here's some pics!
+    </p>
+    <div class="flex">
+        <Lightbox
+            class="h-[150px]"
+            src={firstShirtFront}
+            alt="front of shirt"
+        />
+        <Lightbox class="h-[150px]" src={firstShirtBack} alt="back of shirt" />
+        <Lightbox class="h-[150px]" src={firstShirtSheet} alt="merch sheet" />
+    </div>
+    <p>
+        So, what's next? Well we're planning on recording in January. We have
+        some dates planned already so the music should be out sooner than you'd
+        expect. We're thinking maybe printing a new shirt design, along with
+        putting the recorded music on CDs when it's finished and ready. So many
+        things to look forward to in 2026, thanks again to our friends and
+        families for the support this early on. This can only work because of
+        you.
+    </p>
+    <span class="gap-y-2">
+        <p>
+            With much <span class="text-primary">LOVE</span>, <span
+                class="text-primary">HOPE</span
+            > and <span class="text-primary">COMPASSION</span>,
+        </p>
+        <p>Albert</p>
+        <p class="text-primary">albert@lifechord.net</p>
+    </span>
+</div>
