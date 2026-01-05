@@ -3,35 +3,84 @@ import "@/styles/global.css";
 import BaseLayout from "@/layout/Base.astro";
 ---
 
-<BaseLayout page="News">
+<BaseLayout page="Contact">
     <a href="/" class="href-back">Back to home</a>
-    <p class="mt-3 text-primary text-xs">CONTACT</p>
-    <div class="flex flex-col gap-y-2 text-2xs text-left">
-        <span class="gap-y-2">
-            <p>Band // <span class="text-primary">contact@lifechord.net</span>
-            </p>
-        </span>
-    </div>
-    <p class="mt-3 text-primary text-xs">WEB RELATED</p>
-    <div class="flex flex-col gap-y-2 text-2xs text-left">
-        <span class="gap-y-2">
-            <p>
-                Albert Hernandez //
-                <span class="text-primary">albert@lifechord.net</span>
-            </p>
-            <p>
-            I did this all myself ;) HAHA!
-            </p>
-        </span>
-    </div>
-    <p class="mt-3 text-primary text-xs">P.S.</p>
-    <div class="flex flex-col gap-y-2 text-2xs text-left">
-        <span class="gap-y-2">
-            <p>we don't have a form you can directly submit to currently.</p>
-            <p>or mailing address, or much of anything for that matter...</p>
-        </span>
-        <span class="gap-y-2">
-            <p>but don't be shy, send us an email!</p>
-        </span>
+    <div class="flex justify-between">
+        <div class="w-[270px] mt-3">
+            <p class="text-primary text-xs">CONTACT</p>
+            <div class="flex flex-col gap-y-2 text-2xs text-left">
+                <span class="gap-y-2">
+                    <p>
+                        Band // <span class="text-primary"
+                            >contact@lifechord.net</span
+                        >
+                    </p>
+                </span>
+            </div>
+            <p class="mt-3 text-primary text-xs">WEB RELATED</p>
+            <div class="flex flex-col gap-y-2 text-2xs text-left">
+                <span class="gap-y-2">
+                    <p>
+                        Albert Hernandez //
+                        <span class="text-primary">albert@lifechord.net</span>
+                    </p>
+                    <p>I did this all myself ;) HAHA!</p>
+                </span>
+            </div>
+            <p class="mt-3 text-primary text-xs">P.S.</p>
+            <div class="flex flex-col gap-y-2 text-2xs text-left">
+                <span class="gap-y-2">
+                    <p>
+                        we don't have a form you can directly submit to
+                        currently. or mailing address, or much of anything for
+                        that matter...
+                    </p>
+                </span>
+                <span class="gap-y-2">
+                    <p>but don't be shy, send us an email!</p>
+                </span>
+            </div>
+        </div>
+        <form
+            method="POST"
+            action="/api/contact"
+            class="w-2/5 mt-3 flex flex-col gap-y-1"
+        >
+            <p class="text-xs text-primary">SEND A QUICK MESSAGE</p>
+            <input
+                class="text-2xs border border-foreground/60 px-1 focus:outline-0 focus:border-primary"
+                id="name"
+                name="name"
+                placeholder="name"
+                autocomplete="name"
+                required
+            />
+            <input
+                class="text-2xs border border-foreground/60 px-1 focus:outline-0 focus:border-primary"
+                id="subject"
+                name="subject"
+                placeholder="subject"
+                required
+            />
+            <input
+                type="text"
+                name="company"
+                tabindex="-1"
+                autocomplete="off"
+                class="hidden"
+            />
+            <textarea
+                class="text-2xs border border-foreground/60 p-1 focus:outline-0 focus:border-primary"
+                id="textarea"
+                name="textarea"
+                required
+                rows="10"></textarea>
+            <button
+                class="text-2xs border border-primary px-1 hover:bg-primary hover:text-background hover:cursor-pointer"
+                type="submit"
+            >
+                Send
+            </button>
+        </form>
     </div>
 </BaseLayout>
