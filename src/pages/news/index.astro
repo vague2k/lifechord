@@ -2,12 +2,12 @@
 import "@/styles/global.css";
 import BaseLayout from "@/layout/Base.astro";
 
+import Two from "@/news-articles/1-12-2026/article.astro";
 import One from "@/news-articles/12-30-2025/article.astro";
 ---
 
 <BaseLayout page="News">
     <a href="/" class="href-back">Back to home</a>
-    <div class="w-3/5">
-        <One />
-    </div>
+    <Two />
+    <One />
 </BaseLayout>
