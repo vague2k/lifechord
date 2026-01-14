@@ -13,10 +13,28 @@
     --color-primary: var(--primary);
 }
 
-:root {
+:root[data-theme="blue"] {
     --background: hsl(225.76 55% 8%);
     --foreground: hsl(222.02 46% 94%);
     --primary: hsl(46.65 100% 50%);
+}
+
+:root[data-theme="grey"] {
+    --background: hsl(220 2% 85%);
+    --foreground: hsl(220 90% 0%);
+    --primary: hsl(220 75% 55%);
+}
+
+/* :root[data-theme="sakura"] { */
+/*     --background: hsl(355 50% 10%); */
+/*     --foreground: hsl(358.45 100% 88%); */
+/*     --primary: hsl(347.8 100% 64%); */
+/* } */
+
+:root[data-theme="mcd"] {
+    --background: hsl(0 100% 50%);
+    --foreground: hsl(0 100% 100%);
+    --primary: hsl(50 100% 50%);
 }
 
 @layer base {

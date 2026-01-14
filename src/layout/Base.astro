@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import { Image } from "astro:assets";
 import Home from "../images/home.gif";
+import ThemeSelector from "@/components/ThemeSelector.astro";
 
 const { page } = Astro.props;
 const isDev = import.meta.env.MODE === "development";
@@ -67,32 +68,43 @@ const navClass = (href) =>
                         transition:persist
                     />
                     <div
-                        class="relative bg-foreground/5 border border-l-0 border-r-0 border-foreground/30 h-5 w-full flex items-center overflow-clip"
+                        class="bg-foreground/5 border border-l-0 border-r-0 border-foreground/30 h-5 w-full flex items-center"
                     >
-                        <a href="/" class={navClass("/")}>HOME</a>
-                        <a href="/news" class={navClass("/news")}>NEWS</a>
-                        <a href="/about" class={navClass("/about")}>ABOUT</a>
-                        <a href="/store" class={navClass("/store")}>STORE</a>
-                        <a href="/lyrics" class={navClass("/lyrics")}>LYRICS</a>
-                        <a href="/memories" class={navClass("/memories")}
-                            >MEMORIES</a
+                        <div class="flex items-center relative">
+                            <a href="/" class={navClass("/")}>HOME</a>
+                            <a href="/news" class={navClass("/news")}>NEWS</a>
+                            <a href="/about" class={navClass("/about")}>ABOUT</a
+                            >
+                            <a href="/store" class={navClass("/store")}>STORE</a
+                            >
+                            <a href="/lyrics" class={navClass("/lyrics")}
+                                >LYRICS</a
+                            >
+                            <a href="/memories" class={navClass("/memories")}
+                                >MEMORIES</a
+                            >
+                            <a href="/contact" class={navClass("/contact")}
+                                >CONTACT</a
+                            >
+                            <ThemeSelector />
+                        </div>
+                        <div
+                            class="h-full w-full flex items-center relative overflow-clip"
                         >
-                        <a href="/contact" class={navClass("/contact")}
-                            >CONTACT</a
-                        >
-                        <span
-                            class="absolute right-[150px] rotate-20 w-1 h-15 bg-foreground/10"
-                        ></span>
-                        <span
-                            class="absolute right-[143px] rotate-20 w-1 h-15 bg-foreground/10"
-                        ></span>
-                        <span
-                            id="clock"
-                            class="absolute font-medium right-2 text-2xs"
-                        ></span>
-                        <span
-                            class="absolute right-0.5 rotate-20 w-[134px] h-24 bg-foreground/10"
-                        ></span>
+                            <span
+                                class="absolute right-[150px] rotate-20 w-1 h-15 bg-foreground/10"
+                            ></span>
+                            <span
+                                class="absolute right-[143px] rotate-20 w-1 h-15 bg-foreground/10"
+                            ></span>
+                            <span
+                                id="clock"
+                                class="absolute font-medium right-2 text-2xs"
+                            ></span>
+                            <span
+                                class="absolute right-0.5 rotate-20 w-[134px] h-24 bg-foreground/10"
+                            ></span>
+                        </div>
                     </div>
                 </div>
                 <div class="pb-20 w-[98%] mx-auto">

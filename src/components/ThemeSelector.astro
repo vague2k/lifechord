@@ -1,0 +1,80 @@
+---
+
+---
+
+<div class="relative text-2xs" id="theme-dropdown">
+    <button id="theme-button" class="nav-item text-foreground/60">
+        THEME▾
+    </button>
+    <ul
+        id="theme-menu"
+        class="absolute right-0 mt-[5px] w-36 border border-foreground/30 bg-background hidden z-9999"
+        role="listbox"
+    >
+        <li class="nav-item py-0.5" data-theme="blue">BLUE</li>
+        <li class="nav-item py-0.5" data-theme="grey">GREY</li>
+        <!-- <li class="nav-item py-0.5" data-theme="sakura">SAKURA</li> -->
+        <li class="nav-item py-0.5" data-theme="mcd">
+            MCDONALDS (I LOVE THAT SHIT)
+        </li>
+    </ul>
+</div>
+
+<script is:inline>
+    const THEME_KEY = "lifechord-theme";
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem(THEME_KEY, theme);
+    }
+
+    function adjustHomeLogo(theme) {
+        const logo = document.getElementById("home-logo");
+        if (!logo) return;
+        if (theme === "grey") {
+            console.log("grey");
+            logo.classList.add("invert");
+            logo.classList.add("opacity-75");
+        } else {
+            console.log("no grey");
+            logo.classList.remove("invert");
+            logo.classList.remove("opacity-75");
+        }
+    }
+
+    function initThemeDropdown() {
+        const button = document.getElementById("theme-button");
+        const menu = document.getElementById("theme-menu");
+
+        if (!button || !menu) return;
+
+        // apply saved theme
+        const saved = localStorage.getItem(THEME_KEY) || "blue";
+        setTheme(saved);
+        adjustHomeLogo(saved);
+
+        // toggle menu
+        button.onclick = () => {
+            menu.classList.toggle("hidden");
+        };
+
+        // select theme
+        menu.querySelectorAll("[data-theme]").forEach((item) => {
+            item.onclick = () => {
+                setTheme(item.dataset.theme);
+                adjustHomeLogo(item.dataset.theme);
+                menu.classList.add("hidden");
+            };
+        });
+
+        // close on outside click
+        document.addEventListener("click", (e) => {
+            if (!button.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.add("hidden");
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", initThemeDropdown);
+    document.addEventListener("astro:page-load", initThemeDropdown);
+</script>
