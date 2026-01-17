@@ -20,16 +20,16 @@
 }
 
 :root[data-theme="grey"] {
-    --background: hsl(220 2% 85%);
-    --foreground: hsl(220 90% 0%);
-    --primary: hsl(220 75% 55%);
+    --background: hsl(220 2% 80%);
+    --foreground: hsl(220 100% 2%);
+    --primary: hsl(220 65% 30%);
 }
 
-/* :root[data-theme="sakura"] { */
-/*     --background: hsl(355 50% 10%); */
-/*     --foreground: hsl(358.45 100% 88%); */
-/*     --primary: hsl(347.8 100% 64%); */
-/* } */
+:root[data-theme="green"] {
+    --background: hsl(120 20% 15%);
+    --foreground: hsl(120 100% 95%);
+    --primary: hsl(46.65 100% 50%);
+}
 
 :root[data-theme="mcd"] {
     --background: hsl(0 100% 50%);
