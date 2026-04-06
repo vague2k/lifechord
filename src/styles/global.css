@@ -19,15 +19,15 @@
     --primary: hsl(46.65 100% 50%);
 }
 
-:root[data-theme="grey"] {
-    --background: hsl(220 2% 80%);
-    --foreground: hsl(220 100% 2%);
-    --primary: hsl(220 65% 30%);
+:root[data-theme="maroon"] {
+    --background: hsl(4.52 80% 8%);
+    --foreground: hsl(7.61 99% 95%);
+    --primary: hsl(46.65 100% 50%);
 }
 
 :root[data-theme="green"] {
     --background: hsl(120 20% 15%);
-    --foreground: hsl(120 100% 95%);
+    --foreground: hsl(85.38 59% 89%);
     --primary: hsl(46.65 100% 50%);
 }
 
