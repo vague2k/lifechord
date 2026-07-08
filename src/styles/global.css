@@ -69,14 +69,14 @@ html {
     @apply text-2xs
     text-foreground/60
     underline
-    hover:text-primary
+    hover:text-foreground
     hover:underline
     cursor-pointer
 }
 .nav-item {
     @apply text-2xs
     hover:bg-foreground/10
-    hover:text-primary
+    hover:text-foreground
     hover:underline
     cursor-pointer
     px-1.5
