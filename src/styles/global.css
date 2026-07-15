@@ -58,6 +58,51 @@ html {
     scrollbar-gutter: stable;
 }
 
+.audio-player-container {
+    --seek-before-width: 0%;
+    --volume-before-width: 100%;
+    --buffered-width: 0%;
+}
+
+.range-slider {
+    @apply relative
+    appearance-none
+    bg-transparent
+    cursor-pointer
+    [&::-webkit-slider-runnable-track]:h-1
+    [&::-webkit-slider-runnable-track]:bg-foreground/40
+    [&::-webkit-slider-thumb]:appearance-none
+    [&::-webkit-slider-thumb]:h-4
+    [&::-webkit-slider-thumb]:w-1
+    [&::-webkit-slider-thumb]:bg-primary
+    [&::-webkit-slider-thumb]:mt-[-6px]
+    [&::-moz-range-track]:h-1
+    [&::-moz-range-track]:bg-foreground/40
+    [&::-moz-range-thumb]:appearance-none
+    [&::-moz-range-thumb]:h-4
+    [&::-moz-range-thumb]:w-1
+    [&::-moz-range-thumb]:bg-primary
+    [&::-moz-range-thumb]:mt-[-6px]
+}
+
+.range-slider::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    z-index: -10;
+    left: 0;
+    height: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+#seek-slider::before {
+    width: var(--seek-before-width);
+}
+#volume-slider::before {
+    width: var(--volume-before-width);
+}
+
 .href-song-lyrics {
     @apply text-2xs
     text-foreground/60
