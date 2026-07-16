@@ -8,162 +8,183 @@ const { src = "" } = Astro.props;
 ---
 
 <div
-    id="audio-player"
     class="audio-player-container flex w-full items-center gap-x-2"
-    x-data="{ playing: false, muted: false }"
+    x-data="audioPlayer"
+    x-init="init"
+    x-ref="audioPlayerContainer"
 >
-    <audio src={src} preload="metadata"> </audio>
+    <audio src={src} preload="metadata" x-ref="audio"> </audio>
     <button
-        id="play-button"
         class="hover:cursor-pointer flex items-center justify-center"
-        @click="playing = !playing"
+        @click="togglePlay"
     >
-        <span class="text-2xs">
-            <span id="play-icon" x-show="!playing">
-                <PlayIcon />
-            </span>
-            <span id="pause-icon" x-show="playing"> <PauseIcon /> </span>
+        <span x-show="!playing">
+            <PlayIcon />
+        </span>
+        <span x-show="playing">
+            <PauseIcon />
         </span>
     </button>
-    <span id="current-time" class="text-2xs">0:00</span>
+    <span class="text-2xs" x-text="currentTime"></span>
     <!-- chrome/edge: "-webkit" -->
     <!-- firefox: "-moz" -->
     <input
-        type="range"
         id="seek-slider"
+        type="range"
         max="100"
         value="0"
         class="w-full range-slider"
+        x-ref="seekSlider"
     />
     <button
-        id="sound-button"
         class="hover:cursor-pointer flex items-center justify-center"
-        @click="muted = !muted"
+        @click="toggleMute"
     >
-        <span id="sound-icon" x-show="!muted">
+        <span x-show="!muted">
             <SoundIcon />
         </span>
-        <span id="muted-icon" x-show="muted">
+        <span x-show="muted">
             <SoundMutedIcon />
         </span>
     </button>
-    <span id="current-volume" class="text-2xs">100</span>
+    <span class="text-2xs" x-text="volume"></span>
     <input
-        type="range"
         id="volume-slider"
+        type="range"
         max="100"
         value="100"
         class="w-14 volume-slider"
+        x-ref="volumeSlider"
     />
 </div>
+
 <script>
+    import Alpine from "alpinejs";
+
     document.addEventListener("alpine:init", () => {
-        const audioPlayer = document.getElementById("audio-player");
-        const seekSlider = document.getElementById("seek-slider");
-        const volumeSlider = document.getElementById("volume-slider");
-        const audio = document.querySelector("audio");
-        const playButton = document.getElementById("play-button");
-        const soundButton = document.getElementById("sound-button");
-        const currentTime = document.getElementById("current-time");
-        const currentVolume = document.getElementById("current-volume");
-        const audioPlayerData = Alpine.$data(audioPlayer);
+        Alpine.data("audioPlayer", () => ({
+            playing: false,
+            muted: false,
+            currentTime: "0:00",
+            volume: 100,
+            raf: null,
 
-        playButton?.addEventListener("click", () => {
-            if (audioPlayerData.playing) {
-                audio?.play();
-                requestAnimationFrame(whilePlaying);
-            } else {
-                audio?.pause();
-                cancelAnimationFrame(raf);
-            }
-        });
+            // Cached refs
+            audio: null as HTMLAudioElement | null,
+            seekSlider: null as HTMLElement | null,
+            volumeSlider: null as HTMLElement | null,
+            audioPlayer: null as HTMLElement | null,
 
-        soundButton?.addEventListener("click", () => {
-            if (audioPlayerData.muted) {
-                audio.muted = true;
-            } else {
-                audio.muted = false;
-            }
-        });
+            init() {
+                this.audioPlayer = this.$refs.audioPlayerContainer;
+                this.audio = this.$refs.audio;
+                this.seekSlider = this.$refs.seekSlider;
+                this.volumeSlider = this.$refs.volumeSlider;
 
-        seekSlider.addEventListener("input", (e) => {
-            audioPlayer.style.setProperty(
-                "--seek-before-width",
-                (e.target.value / e.target.max) * 100 + "%",
-            );
-        });
+                if (this.audio.readyState > 0) {
+                    this.setSliderMax();
+                    this.displayBufferedAmount();
+                } else {
+                    this.audio.addEventListener("loadedmetadata", () => {
+                        this.setSliderMax();
+                        this.displayBufferedAmount();
+                    });
+                }
 
-        volumeSlider.addEventListener("input", (e) => {
-            audioPlayer.style.setProperty(
-                "--volume-before-width",
-                (e.target.value / e.target.max) * 100 + "%",
-            );
-        });
+                this.seekSlider.addEventListener("input", (e) => {
+                    this.audioPlayer.style.setProperty(
+                        "--seek-before-width",
+                        `${(e.target.value / e.target.max) * 100}%`,
+                    );
 
-        let raf = null;
+                    this.currentTime = this.formatTime(this.seekSlider.value);
 
-        function calculateTime(secs) {
-            const minutes = Math.floor(secs / 60);
-            const seconds = Math.floor(secs % 60);
-            const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-            return `${minutes}:${returnedSeconds}`;
-        }
+                    if (!this.audio.paused) {
+                        cancelAnimationFrame(this.raf);
+                    }
+                });
 
-        function setSliderMax() {
-            seekSlider.max = Math.floor(audio.duration);
-        }
+                this.seekSlider.addEventListener("change", () => {
+                    this.audio.currentTime = this.seekSlider.value;
 
-        function displayBufferedAmount() {
-            const bufferedAmount = Math.floor(
-                audio.buffered.end(audio.buffered.length - 1),
-            );
-            audioPlayer.style.setProperty(
-                "--buffered-width",
-                `${(bufferedAmount / seekSlider.max) * 100}%`,
-            );
-        }
+                    if (!this.audio.paused) {
+                        this.raf = requestAnimationFrame(() =>
+                            this.whilePlaying(),
+                        );
+                    }
+                });
 
-        function whilePlaying() {
-            seekSlider.value = Math.floor(audio.currentTime);
-            currentTime.textContent = calculateTime(seekSlider.value);
-            audioPlayer.style.setProperty(
-                "--seek-before-width",
-                `${(seekSlider.value / seekSlider.max) * 100}%`,
-            );
-            raf = requestAnimationFrame(whilePlaying);
-        }
+                this.volumeSlider.addEventListener("input", (e) => {
+                    const value = e.target.value;
 
-        if (audio.readyState > 0) {
-            setSliderMax();
-            displayBufferedAmount();
-        } else {
-            audio.addEventListener("loadedmetadata", () => {
-                setSliderMax();
-                displayBufferedAmount();
-            });
-        }
+                    this.audioPlayer.style.setProperty(
+                        "--volume-before-width",
+                        `${(value / e.target.max) * 100}%`,
+                    );
 
-        audio.addEventListener("progress", displayBufferedAmount);
+                    this.volume = value;
+                    this.audio.volume = value / 100;
+                });
 
-        seekSlider.addEventListener("input", () => {
-            currentTime.textContent = calculateTime(seekSlider.value);
-            if (!audio.paused) {
-                cancelAnimationFrame(raf);
-            }
-        });
+                this.audio.addEventListener("progress", () => {
+                    this.displayBufferedAmount();
+                });
+            },
 
-        seekSlider.addEventListener("change", () => {
-            audio.currentTime = seekSlider.value;
-            if (!audio.paused) {
-                requestAnimationFrame(whilePlaying);
-            }
-        });
+            togglePlay() {
+                this.playing = !this.playing;
 
-        volumeSlider.addEventListener("input", (e) => {
-            const value = e.target.value;
+                if (this.playing) {
+                    this.audio.play();
 
-            currentVolume.textContent = value;
-            audio.volume = value / 100;
-        });
+                    this.raf = requestAnimationFrame(() => this.whilePlaying());
+                } else {
+                    this.audio.pause();
+                    cancelAnimationFrame(this.raf);
+                }
+            },
+
+            toggleMute() {
+                this.muted = !this.muted;
+                this.audio.muted = this.muted;
+            },
+
+            formatTime(secs) {
+                const minutes = Math.floor(secs / 60);
+                const seconds = Math.floor(secs % 60);
+
+                return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+            },
+
+            setSliderMax() {
+                this.seekSlider.max = Math.floor(this.audio.duration);
+            },
+
+            displayBufferedAmount() {
+                if (!this.audio.buffered.length) return;
+
+                const bufferedAmount = Math.floor(
+                    this.audio.buffered.end(this.audio.buffered.length - 1),
+                );
+
+                this.audioPlayer.style.setProperty(
+                    "--buffered-width",
+                    `${(bufferedAmount / this.seekSlider.max) * 100}%`,
+                );
+            },
+
+            whilePlaying() {
+                this.seekSlider.value = Math.floor(this.audio.currentTime);
+
+                this.currentTime = this.formatTime(this.seekSlider.value);
+
+                this.audioPlayer.style.setProperty(
+                    "--seek-before-width",
+                    `${(this.seekSlider.value / this.seekSlider.max) * 100}%`,
+                );
+
+                this.raf = requestAnimationFrame(() => this.whilePlaying());
+            },
+        }));
     });
 </script>
