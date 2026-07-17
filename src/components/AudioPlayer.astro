@@ -10,7 +10,6 @@ const { src = "" } = Astro.props;
 <div
     class="audio-player-container flex w-full items-center gap-x-2"
     x-data="audioPlayer"
-    x-init="init"
     x-ref="audioPlayerContainer"
 >
     <audio src={src} preload="metadata" x-ref="audio"> </audio>
@@ -67,19 +66,19 @@ const { src = "" } = Astro.props;
             muted: false,
             currentTime: "0:00",
             volume: 100,
-            raf: null,
+            raf: 0,
 
             // Cached refs
-            audio: null as HTMLAudioElement | null,
-            seekSlider: null as HTMLElement | null,
-            volumeSlider: null as HTMLElement | null,
-            audioPlayer: null as HTMLElement | null,
+            audio: {} as HTMLAudioElement,
+            seekSlider: {} as HTMLInputElement,
+            volumeSlider: {} as HTMLInputElement,
+            audioPlayer: {} as HTMLElement,
 
             init() {
                 this.audioPlayer = this.$refs.audioPlayerContainer;
-                this.audio = this.$refs.audio;
-                this.seekSlider = this.$refs.seekSlider;
-                this.volumeSlider = this.$refs.volumeSlider;
+                this.audio = this.$refs.audio as HTMLAudioElement;
+                this.seekSlider = this.$refs.seekSlider as HTMLInputElement;
+                this.volumeSlider = this.$refs.volumeSlider as HTMLInputElement;
 
                 if (this.audio.readyState > 0) {
                     this.setSliderMax();
@@ -188,3 +187,82 @@ const { src = "" } = Astro.props;
         }));
     });
 </script>
+
+<style>
+    @reference "tailwindcss";
+    @reference "../styles/global.css";
+    .audio-player-container {
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .range-slider,
+    .volume-slider {
+        @apply relative
+        appearance-none
+        bg-transparent
+        cursor-pointer
+        [&::-webkit-slider-thumb]:appearance-none
+        [&::-webkit-slider-thumb]:h-4
+        [&::-webkit-slider-thumb]:w-1
+        [&::-webkit-slider-thumb]:bg-primary
+        [&::-webkit-slider-thumb]:mt-[-6px]
+        [&::-moz-range-thumb]:appearance-none
+        [&::-moz-range-thumb]:h-4
+        [&::-moz-range-thumb]:w-1
+        [&::-moz-range-thumb]:bg-primary
+        [&::-moz-range-thumb]:mt-[-6px];
+    }
+
+    .range-slider::before,
+    .volume-slider::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        z-index: -10;
+        left: 0;
+        height: 4px;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+
+    .range-slider::before {
+        width: var(--seek-before-width);
+    }
+
+    .volume-slider::before {
+        width: var(--volume-before-width);
+    }
+
+    .volume-slider {
+        @apply [&::-webkit-slider-runnable-track]:h-1
+        [&::-webkit-slider-runnable-track]:bg-foreground/40;
+    }
+
+    .range-slider::-webkit-slider-runnable-track {
+        height: 4px;
+        background: linear-gradient(
+            to right,
+            color-mix(in srgb, var(--foreground) 70%, transparent) 0,
+            color-mix(in srgb, var(--foreground) 70%, transparent)
+                var(--buffered-width),
+            color-mix(in srgb, var(--foreground) 40%, transparent)
+                var(--buffered-width),
+            color-mix(in srgb, var(--foreground) 40%, transparent) 100%
+        );
+    }
+
+    .range-slider::-moz-range-track {
+        height: 4px;
+        background: linear-gradient(
+            to right,
+            color-mix(in srgb, var(--foreground) 70%, transparent) 0,
+            color-mix(in srgb, var(--foreground) 70%, transparent)
+                var(--buffered-width),
+            color-mix(in srgb, var(--foreground) 40%, transparent)
+                var(--buffered-width),
+            color-mix(in srgb, var(--foreground) 40%, transparent) 100%
+        );
+    }
+</style>
